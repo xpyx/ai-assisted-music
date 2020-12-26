@@ -63,12 +63,33 @@ sox -t wav *.wav combined_all.wav
 gcloud compute scp combined_all.wav INSTANCE_NAME:~/prism-samplernn/input_audio
 ```
 
-12. activate the created environment
+12. in your virtual machine, process audio to chunks
 ```
-conda activate prism-samplernn
+python chunk_audio.py \
+  --input_file /path/to/file/audio_name.wav \
+  --output_dir ./chunks \
+  --chunk_length 8000 \
+  --overlap 1000
 ```
 
-13. activate the created environment
+(here's an alternative way for doing this is to use sox on your local machine and upload the chunks to your deeplearning vm. sox is much faster than the python script chunk_audio.py)
 ```
-conda activate prism-samplernn
+sox combined.wav chunk.wav trim 0 5 : newfile : restart
+```
+
+### train the model
+
+13. start the training script
+```
+python train.py \
+  --id test \
+  --data_dir ./data \ #change to your data directory
+  --num_epochs 20 \
+  --batch_size 32 \
+  --checkpoint_every 500 \
+  --checkpoint_policy Best \
+  --output_file_dur 3 \
+  --sample_rate 16000 \
+  --max_checkpoints 2 \
+  --checkpoint_every 500
 ```
