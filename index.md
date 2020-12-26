@@ -1,37 +1,74 @@
-## Welcome to GitHub Pages
+### virtual machine environment setup
 
-You can use the [editor on GitHub](https://github.com/xpyx/ai-assisted-music/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+1. change rights
+```
+sudo chown -R $USER:$USER /opt/conda/pkgs/cache/
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+2. create a conda environment
+```
+conda create -n prism-samplernn anaconda
+```
 
-### Jekyll Themes
+3. activate the created environment
+```
+conda activate prism-samplernn
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/xpyx/ai-assisted-music/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+4. install dependencies
+```
+pip install -r requirements.txt
+```
 
-### Support or Contact
+5. install sndfile
+```
+sudo apt-get install libsndfile1
+```
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+6. install sox
+```
+sudo apt install sox
+```
+
+7. clone the <a href="https://github.com/rncm-prism/prism-samplernn">PRiSM SampleRNN</a> repository
+```
+git clone https://github.com/rncm-prism/prism-samplernn.git
+```
+
+### training data preprocessing
+
+7. cd to the directory where your samples are and change files to mono
+```
+for i in *wav; do sox $i ${i}_mono_merged.wav remix 1,2; done
+```
+
+8. (for the new files) resample to 16000hz
+```
+find . -maxdepth 1 -name '*mono_merged.wav' -type f -print0 | xargs -0 -t -I {} sox {} -r 16000 16000/{}
+```
+
+9. combine the files in the directory 16000/
+```
+cd 16000
+sox -t wav *.wav combined.wav
+```
+
+10. move all combined wavs to one folder and combine them
+```
+sox -t wav *.wav combined_all.wav
+```
+
+11. move combined_all.wav to gce
+```
+gcloud compute scp combined_all.wav INSTANCE_NAME:~/prism-samplernn/input_audio
+```
+
+12. activate the created environment
+```
+conda activate prism-samplernn
+```
+
+13. activate the created environment
+```
+conda activate prism-samplernn
+```
