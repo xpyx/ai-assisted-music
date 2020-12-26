@@ -1,6 +1,6 @@
 ### virtual machine environment setup
 
-1. change rights
+1. change owner of conda cache
 ```
 sudo chown -R $USER:$USER /opt/conda/pkgs/cache/
 ```
@@ -94,7 +94,7 @@ python train.py \
   --checkpoint_every 500
 ```
 
-TODO
+###TODO
 14. resume training
 ```
 python train.py \
