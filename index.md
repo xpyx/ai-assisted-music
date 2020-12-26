@@ -93,3 +93,34 @@ python train.py \
   --max_checkpoints 2 \
   --checkpoint_every 500
 ```
+
+TODO
+14. resume training
+```
+python train.py \
+  --id test \
+  --data_dir ./data \
+  --num_epochs 20 \
+  --batch_size 32 \
+  --checkpoint_every 500 \
+  --checkpoint_policy Best \
+  --output_file_dur 3 \
+  --sample_rate 16000 \
+  --max_checkpoints 2 \
+  --checkpoint_every 500 
+```
+
+### generate audio
+
+15. generate audio
+```
+python generate.py \
+  --output_path ./gen_audio/ \
+  --checkpoint_path ./logdir/default/26.07.2020_20.48.51/model.ckpt-100 \
+  --config_file ./default.config.json \
+  --num_seqs 10 \
+  --dur 10 \
+  --sample_rate 22050 \
+  --seed path/to/seed.wav \
+  --seed_offset 500
+```
