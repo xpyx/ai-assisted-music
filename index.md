@@ -1,3 +1,7 @@
+## Is it possible to generate old-school drumbreaks with PRiSM-SampleRNN? 
+
+Let´s find out!
+
 ### TODO: how to create a google deeplearning instance
 
 explain all the steps to creating a GCE instance
