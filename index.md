@@ -136,7 +136,7 @@ python generate.py \
 ```
 
 
-### default.config.json
+### change rnn from gru to lstm
 
 24.12.2020 - 27.12.2020 using gru rnn
 ```
@@ -152,7 +152,6 @@ python generate.py \
 }
 ```
 27.12.2020 -> using lstm rnn
-
 ```
 {
     "seq_len": 1024,
@@ -164,4 +163,16 @@ python generate.py \
     "q_levels": 256,
     "emb_size": 256
 }
+```
+
+16. start the training script with lstm
+```
+python train.py \
+  --id lstm \
+  --data_dir ./data \
+  --num_epochs 1200 \
+  --batch_size 32 \
+  --checkpoint_every 300 \
+  --output_file_dur 3 \
+  --sample_rate 16000
 ```
