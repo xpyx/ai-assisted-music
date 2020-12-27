@@ -1,4 +1,14 @@
-### virtual machine environment setup
+### TODO: how to create a google deeplearning instance
+
+explain all the steps to creating a GCE instance
+
+
+### google compute engine vm setup
+
+0. ssh into the vm
+```
+gcloud compute ssh YOUR_VM_INSTANCE_NAME
+```
 
 1. change owner of conda cache
 ```
@@ -34,6 +44,7 @@ sudo apt install sox
 ```
 git clone https://github.com/rncm-prism/prism-samplernn.git
 ```
+
 
 ### training data preprocessing
 
@@ -77,38 +88,35 @@ python chunk_audio.py \
 sox combined.wav chunk.wav trim 0 5 : newfile : restart
 ```
 
+
 ### train the model
 
 13. start the training script
 ```
 python train.py \
-  --id test \
-  --data_dir ./data \ #change to your data directory
-  --num_epochs 20 \
+  --id test_gen_works \
+  --data_dir ./data \
+  --num_epochs 100 \
   --batch_size 32 \
-  --checkpoint_every 500 \
-  --checkpoint_policy Best \
-  --output_file_dur 3 \
-  --sample_rate 16000 \
-  --max_checkpoints 2 \
-  --checkpoint_every 500
+  --checkpoint_every 2 \
+  --output_file_dur 5 \
+  --sample_rate 16000
 ```
 
-###TODO
-14. resume training
+14. if training is interrupted, training can be resumed with the following command
 ```
 python train.py \
-  --id test \
+  --id test_gen_works \
   --data_dir ./data \
-  --num_epochs 20 \
+  --num_epochs 100 \
   --batch_size 32 \
-  --checkpoint_every 500 \
-  --checkpoint_policy Best \
-  --output_file_dur 3 \
+  --checkpoint_every 2 \
+  --output_file_dur 5 \
   --sample_rate 16000 \
-  --max_checkpoints 2 \
-  --checkpoint_every 500 
+  --resume True \
+  --resume_from ./logdir/test_gen_works/27.12.2020_06.33.26/model.ckpt-18
 ```
+
 
 ### generate audio
 
