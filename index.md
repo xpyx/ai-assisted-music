@@ -114,11 +114,11 @@ python train.py \
   --data_dir ./data \
   --num_epochs 100 \
   --batch_size 32 \
-  --checkpoint_every 2 \
+  --checkpoint_every 50 \
   --output_file_dur 5 \
   --sample_rate 16000 \
   --resume True \
-  --resume_from ./logdir/test_gen_works/27.12.2020_06.33.26/model.ckpt-18
+  --resume_from ./logdir/test_gen_works/27.12.2020_11.56.07/model.ckpt-26
 ```
 
 
