@@ -114,8 +114,8 @@ python train.py \
   --data_dir ./data \
   --num_epochs 100 \
   --batch_size 32 \
-  --checkpoint_every 50 \
-  --output_file_dur 5 \
+  --checkpoint_every 5 \
+  --output_file_dur 3 \
   --sample_rate 16000 \
   --resume True \
   --resume_from ./logdir/test_gen_works/27.12.2020_11.56.07/model.ckpt-26
@@ -128,11 +128,39 @@ python train.py \
 ```
 python generate.py \
   --output_path ./gen_audio/ \
-  --checkpoint_path ./logdir/default/26.07.2020_20.48.51/model.ckpt-100 \
+  --checkpoint_path ./logdir/test_gen_works/27.12.2020_11.56.07/model.ckpt-26 \
   --config_file ./default.config.json \
-  --num_seqs 10 \
-  --dur 10 \
-  --sample_rate 22050 \
-  --seed path/to/seed.wav \
-  --seed_offset 500
+  --num_seqs 100 \
+  --dur 5 \
+  --sample_rate 16000
 ```
+
+
+### default.config.json
+
+24.12.2020 - 27.12.2020 using gru rnn
+
+{
+    "seq_len": 1024,
+    "frame_sizes": [16,64],
+    "dim": 1024,
+    "rnn_type": "gru",
+    "num_rnn_layers": 4,
+    "q_type": "mu-law",
+    "q_levels": 256,
+    "emb_size": 256
+}
+
+27.12.2020 -> using lstm rnn
+
+
+{
+    "seq_len": 1024,
+    "frame_sizes": [16,64],
+    "dim": 1024,
+    "rnn_type": "lstm",
+    "num_rnn_layers": 4,
+    "q_type": "mu-law",
+    "q_levels": 256,
+    "emb_size": 256
+}
