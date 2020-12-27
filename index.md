@@ -139,7 +139,7 @@ python generate.py \
 ### default.config.json
 
 24.12.2020 - 27.12.2020 using gru rnn
-
+```
 {
     "seq_len": 1024,
     "frame_sizes": [16,64],
@@ -150,10 +150,10 @@ python generate.py \
     "q_levels": 256,
     "emb_size": 256
 }
-
+```
 27.12.2020 -> using lstm rnn
 
-
+```
 {
     "seq_len": 1024,
     "frame_sizes": [16,64],
@@ -164,3 +164,4 @@ python generate.py \
     "q_levels": 256,
     "emb_size": 256
 }
+```
