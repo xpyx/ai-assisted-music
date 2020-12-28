@@ -118,7 +118,7 @@ python train.py \
   --output_file_dur 3 \
   --sample_rate 16000 \
   --resume True \
-  --resume_from ./logdir/test_gen_works/27.12.2020_11.56.07/model.ckpt-26
+  --resume_from ./logdir/lstm/28.12.2020_05.19.25
 ```
 
 
@@ -170,9 +170,24 @@ python generate.py \
 python train.py \
   --id lstm \
   --data_dir ./data \
-  --num_epochs 1200 \
+  --num_epochs 100 \
   --batch_size 32 \
-  --checkpoint_every 300 \
+  --checkpoint_every 5 \
   --output_file_dur 3 \
   --sample_rate 16000
 ```
+
+17. continue training
+```
+python train.py \
+  --id test_gen_works \
+  --data_dir ./data \
+  --num_epochs 100 \
+  --batch_size 32 \
+  --checkpoint_every 5 \
+  --output_file_dur 3 \
+  --sample_rate 16000 \
+  --resume True \
+  --resume_from ./logdir/lstm/28.12.2020_05.19.25/model.ckpt-20
+```
+
