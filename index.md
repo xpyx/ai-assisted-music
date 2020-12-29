@@ -191,3 +191,42 @@ python train.py \
   --resume_from ./logdir/lstm/28.12.2020_05.19.25/model.ckpt-20
 ```
 
+18. trainin stops again
+```
+Epoch: 24/100, Step: 3500/3500, Loss: 3.432, Accuracy: 10.721, (0.195 sec/step)
+Corpus length: 32 files.
+Loading corpus entry ./data/combined_all_chunk_778.wav
+Loading corpus entry ./data/combined_all_chunk_564.wav
+Loading corpus entry ./data/combined_all_chunk_698.wav
+Loading corpus entry ./data/combined_all_chunk_483.wav
+Loading corpus entry ./data/combined_all_chunk_160.wav
+Loading corpus entry ./data/combined_all_chunk_265.wav
+Loading corpus entry ./data/combined_all_chunk_238.wav
+Loading corpus entry ./data/combined_all_chunk_924.wav
+Loading corpus entry ./data/combined_all_chunk_195.wav
+Loading corpus entry ./data/combined_all_chunk_237.wav
+Loading corpus entry ./data/combined_all_chunk_153.wav
+Loading corpus entry ./data/combined_all_chunk_643.wav
+Loading corpus entry ./data/combined_all_chunk_733.wav
+Loading corpus entry ./data/combined_all_chunk_540.wav
+Loading corpus entry ./data/combined_all_chunk_880.wav
+Loading corpus entry ./data/combined_all_chunk_250.wav
+Loading corpus entry ./data/combined_all_chunk_45.wav
+Loading corpus entry ./data/combined_all_chunk_865.wav
+Loading corpus entry ./data/combined_all_chunk_675.wav
+Loading corpus entry ./data/combined_all_chunk_876.wav
+Loading corpus entry ./data/combined_all_chunk_824.wav
+Loading corpus entry ./data/combined_all_chunk_375.wav
+Loading corpus entry ./data/combined_all_chunk_910.wav
+Loading corpus entry ./data/combined_all_chunk_708.wav
+Loading corpus entry ./data/combined_all_chunk_94.wav
+Loading corpus entry ./data/combined_all_chunk_653.wav
+Loading corpus entry ./data/combined_all_chunk_103.wav
+Loading corpus entry ./data/combined_all_chunk_946.wav
+Loading corpus entry ./data/combined_all_chunk_458.wav
+Loading corpus entry ./data/combined_all_chunk_559.wav
+Loading corpus entry ./data/combined_all_chunk_257.wav
+Loading corpus entry ./data/combined_all_chunk_106.wav
+Epoch: 24/100, Total Steps: 3500, Loss: 3.432, Accuracy: 10.721, Val Loss: 3.547, Val Accuracy: 9.293 (11 min 27.014 sec)
+(prism-samplernn) xpyx@deeplearning-tf-vm:~/prism-samplernn$
+```
