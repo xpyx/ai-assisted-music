@@ -230,3 +230,17 @@ Loading corpus entry ./data/combined_all_chunk_106.wav
 Epoch: 24/100, Total Steps: 3500, Loss: 3.432, Accuracy: 10.721, Val Loss: 3.547, Val Accuracy: 9.293 (11 min 27.014 sec)
 (prism-samplernn) xpyx@deeplearning-tf-vm:~/prism-samplernn$
 ```
+
+19. continue training
+```
+python train.py \
+  --id lstm \
+  --data_dir ./data \
+  --num_epochs 100 \
+  --batch_size 32 \
+  --checkpoint_every 10 \
+  --output_file_dur 3 \
+  --sample_rate 16000 \
+  --resume True \
+  --resume_from ./logdir/lstm/28.12.2020_05.19.25/model.ckpt-20
+```
